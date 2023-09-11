@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 11, 2023 at 09:30 AM
+-- Generation Time: Sep 11, 2023 at 09:47 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -29,9 +29,9 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `job_seeker` (
   `ssn` int(11) NOT NULL,
-  `js_username` varchar(50) DEFAULT NULL,
-  `js_password` varchar(50) DEFAULT NULL,
-  `js_name` varchar(50) DEFAULT NULL,
+  `js_username` varchar(255) DEFAULT NULL,
+  `js_password` varchar(255) DEFAULT NULL,
+  `js_name` varchar(255) DEFAULT NULL,
   `js_phone_no` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -48,14 +48,28 @@ CREATE TABLE `job_seeker_chat` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `post`
+--
+
+CREATE TABLE `post` (
+  `p_phone_no` int(11) NOT NULL,
+  `p_shop_name` varchar(255) DEFAULT NULL,
+  `detail` varchar(255) DEFAULT NULL,
+  `p_address` varchar(255) DEFAULT NULL,
+  `type` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `shop_owner`
 --
 
 CREATE TABLE `shop_owner` (
   `so_phone_no` int(11) NOT NULL,
-  `so_username` varchar(50) DEFAULT NULL,
-  `so_password` varchar(50) DEFAULT NULL,
-  `so_name` varchar(50) DEFAULT NULL
+  `so_username` varchar(255) DEFAULT NULL,
+  `so_password` varchar(255) DEFAULT NULL,
+  `so_name` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -85,6 +99,12 @@ ALTER TABLE `job_seeker_chat`
   ADD KEY `js_ssn` (`js_ssn`);
 
 --
+-- Indexes for table `post`
+--
+ALTER TABLE `post`
+  ADD PRIMARY KEY (`p_phone_no`);
+
+--
 -- Indexes for table `shop_owner`
 --
 ALTER TABLE `shop_owner`
@@ -105,6 +125,12 @@ ALTER TABLE `shop_owner_chat`
 --
 ALTER TABLE `job_seeker`
   MODIFY `ssn` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `post`
+--
+ALTER TABLE `post`
+  MODIFY `p_phone_no` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `shop_owner`
